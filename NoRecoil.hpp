@@ -17,7 +17,7 @@ struct NoRecoil {
     void controlWeapon() {
         noRecPitch = cl->NORECOIL_PITCH_REDUCTION; 
         noRecYaw = cl->NORECOIL_YAW_REDUCTION; 
-        if (!cl->FEATURE_NORECOIL_ON)return;
+        if (!cl->FEATURE_NORECOIL_OFF)return;
         if (!lp->isCombatReady()) return;
         if (!lp->inAttack) return;
         Vector2D punchAnglesDiff = lp->punchAnglesDiff;
