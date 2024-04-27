@@ -12,11 +12,11 @@ struct ConfigLoader {
     bool FEATURE_AIMBOT_ON = false;
     bool FEATURE_SENSE_ON = false;
     bool FEATURE_ITEM_GLOW_ON = true;
-    bool FEATURE_SPECTATOR_ON = true;
+    bool FEATURE_SPECTATOR_ON = false;
     bool FEATURE_QUICKTURN_ON = false;
     bool FEATURE_SKINCHANGER_ON = false;
     bool FEATURE_TRIGGERBOT_ON = false;
-    bool FEATURE_NORECOIL_ON = true;
+    bool FEATURE_NORECOIL_ON = false;
     bool FEATURE_PRINT_LEVELS_ON = false;
     bool FEATURE_SUPER_GLIDE_ON = true;
     bool FEATURE_MAP_RADAR_ON = true;
@@ -30,29 +30,29 @@ struct ConfigLoader {
     int SENSE_MAXRANGE = 250;
     int SENSE_MAXRANGE_OVERWALL = 250;
     //aimbot
-    bool AIMBOT_ACTIVATED_BY_ATTACK = true;
+    bool AIMBOT_ACTIVATED_BY_ATTACK = false;
     bool AIMBOT_ACTIVATED_BY_ADS = false;
-    std::string AIMBOT_ACTIVATED_BY_BUTTON = "XK_Shift_L";
-    std::string FEATURE_QUICKTURN_BUTTON = "XK_f";
-    std::string FEATURE_PRINT_LEVELS_BUTTON = "XK_p";
-    std::string FEATURE_MAP_RADAR_BUTTON = "XK_m";
+    std::string AIMBOT_ACTIVATED_BY_BUTTON = "XK_C";
+    std::string FEATURE_QUICKTURN_BUTTON = "XK_L";
+    std::string FEATURE_PRINT_LEVELS_BUTTON = "XK_P";
+    std::string FEATURE_MAP_RADAR_BUTTON = "XK_M";
     float AIMBOT_SMOOTH = 20.211;
     float AIMBOT_SPEED = 40.211;
     float AIMBOT_SMOOTH_EXTRA_BY_DISTANCE = 1000;
     float AIMBOT_FOV = 5.0000;
-    bool AIMBOT_PREDICT_BULLETDROP = true;
-    bool AIMBOT_PREDICT_MOVEMENT = true;
-    bool AIMBOT_ALLOW_TARGET_SWITCH = true;
+    bool AIMBOT_PREDICT_BULLETDROP = false;
+    bool AIMBOT_PREDICT_MOVEMENT = false;
+    bool AIMBOT_ALLOW_TARGET_SWITCH = false;
     int AIMBOT_MAX_DISTANCE = 100;
     int AIMBOT_MIN_DISTANCE = 1;
 
     void loadVariables(std::string key, std::string val) {
         //features
-        FEATURE_AIMBOT_ON = (key.compare("FEATURE_AIMBOT_ON") != 0) ? FEATURE_AIMBOT_ON : toBool(val);
+        FEATURE_AIMBOT_ON = (key.compare("FEATURE_AIMBOT_OFF") != 0) ? FEATURE_AIMBOT_ON : toBool(val);
         FEATURE_SENSE_ON = (key.compare("FEATURE_SENSE_ON") != 0) ? FEATURE_SENSE_ON : toBool(val);
         FEATURE_ITEM_GLOW_ON = (key.compare("FEATURE_ITEM_GLOW_ON") != 0) ? FEATURE_ITEM_GLOW_ON : toBool(val);
-        FEATURE_TRIGGERBOT_ON = (key.compare("FEATURE_TRIGGERBOT_ON") != 0) ? FEATURE_TRIGGERBOT_ON : toBool(val);
-        FEATURE_NORECOIL_ON = (key.compare("FEATURE_NORECOIL_ON") != 0) ? FEATURE_NORECOIL_ON : toBool(val);
+        FEATURE_TRIGGERBOT_ON = (key.compare("FEATURE_TRIGGERBOT_OFF") != 0) ? FEATURE_TRIGGERBOT_ON : toBool(val);
+        FEATURE_NORECOIL_ON = (key.compare("FEATURE_NORECOIL_OFF") != 0) ? FEATURE_NORECOIL_ON : toBool(val);
         //noRecoil        
         NORECOIL_PITCH_REDUCTION = (key.compare("NORECOIL_PITCH_REDUCTION") != 0) ? NORECOIL_PITCH_REDUCTION : stoi(val);
         NORECOIL_YAW_REDUCTION = (key.compare("NORECOIL_YAW_REDUCTION") != 0) ? NORECOIL_YAW_REDUCTION : stoi(val);
@@ -75,12 +75,12 @@ struct ConfigLoader {
         AIMBOT_MAX_DISTANCE = (key.compare("AIMBOT_MAX_DISTANCE") != 0) ? AIMBOT_MAX_DISTANCE : stoi(val);
         AIMBOT_MIN_DISTANCE = (key.compare("AIMBOT_MIN_DISTANCE") != 0) ? AIMBOT_MIN_DISTANCE : stoi(val);
         //random
-        FEATURE_SPECTATOR_ON = (key.compare("FEATURE_SPECTATOR_ON") != 0) ? FEATURE_SPECTATOR_ON : toBool(val);
+        FEATURE_SPECTATOR_ON = (key.compare("FEATURE_SPECTATOR_OFF") != 0) ? FEATURE_SPECTATOR_ON : toBool(val);
         FEATURE_SUPER_GLIDE_ON = (key.compare("FEATURE_SUPER_GLIDE_ON") != 0) ? FEATURE_SUPER_GLIDE_ON : toBool(val);
-        FEATURE_SKINCHANGER_ON = (key.compare("FEATURE_SKINCHANGER_ON") != 0) ? FEATURE_SKINCHANGER_ON : toBool(val);
-        FEATURE_QUICKTURN_ON = (key.compare("FEATURE_QUICKTURN_ON") != 0) ? FEATURE_QUICKTURN_ON : toBool(val);    
+        FEATURE_SKINCHANGER_ON = (key.compare("FEATURE_SKINCHANGER_OFF") != 0) ? FEATURE_SKINCHANGER_ON : toBool(val);
+        FEATURE_QUICKTURN_ON = (key.compare("FEATURE_QUICKTURN_OFF") != 0) ? FEATURE_QUICKTURN_ON : toBool(val);    
         FEATURE_QUICKTURN_BUTTON = (key.compare("FEATURE_QUICKTURN_BUTTON") != 0) ? FEATURE_QUICKTURN_BUTTON : trimConstructive(val);
-        FEATURE_PRINT_LEVELS_ON = (key.compare("FEATURE_PRINT_LEVELS_ON") != 0) ? FEATURE_PRINT_LEVELS_ON : toBool(val); 
+        FEATURE_PRINT_LEVELS_ON = (key.compare("FEATURE_PRINT_LEVELS_FF") != 0) ? FEATURE_PRINT_LEVELS_ON : toBool(val); 
         FEATURE_PRINT_LEVELS_BUTTON = (key.compare("FEATURE_PRINT_LEVELS_BUTTON") != 0) ? FEATURE_PRINT_LEVELS_BUTTON : trimConstructive(val);
         FEATURE_MAP_RADAR_ON = (key.compare("FEATURE_MAP_RADAR_ON") != 0) ? FEATURE_MAP_RADAR_ON : toBool(val); 
         FEATURE_MAP_RADAR_BUTTON = (key.compare("FEATURE_MAP_RADAR_BUTTON") != 0) ? FEATURE_MAP_RADAR_BUTTON : trimConstructive(val);
@@ -89,17 +89,17 @@ struct ConfigLoader {
     void print() {
         printf("\n==================== GRINDER SETTINGS LOADED ========================\n");
         //features
-        printf("FEATURE_AIMBOT_ON\t\t\t\t\t%s\n", FEATURE_AIMBOT_ON ? "YES" : "NO");
-        printf("FEATURE_NORECOIL_ON\t\t\t\t\t%s\n", FEATURE_NORECOIL_ON ? "YES" : "NO");
+        printf("FEATURE_AIMBOT_ON\t\t\t\t\t%s\n", FEATURE_AIMBOT_OFF ? "YES" : "NO");
+        printf("FEATURE_NORECOIL_ON\t\t\t\t\t%s\n", FEATURE_NORECOIL_OFF ? "YES" : "NO");
         printf("FEATURE_SENSE_ON\t\t\t\t\t%s\n", FEATURE_SENSE_ON ? "YES" : "NO");
         printf("FEATURE_ITEM_GLOW_ON\t\t\t\t\t%s\n", FEATURE_ITEM_GLOW_ON ? "YES" : "NO");
-        printf("FEATURE_TRIGGERBOT_ON\t\t\t\t\t%s\n\n", FEATURE_TRIGGERBOT_ON ? "YES" : "NO");
-        printf("FEATURE_SPECTATOR_ON\t\t\t\t\t%s\n", FEATURE_SPECTATOR_ON ? "YES" : "NO");
+        printf("FEATURE_TRIGGERBOT_ON\t\t\t\t\t%s\n\n", FEATURE_TRIGGERBOT_OFF ? "YES" : "NO");
+        printf("FEATURE_SPECTATOR_ON\t\t\t\t\t%s\n", FEATURE_SPECTATOR_OFF ? "YES" : "NO");
         printf("FEATURE_SUPER_GLIDE_ON\t\t\t\t\t%s\n", FEATURE_SUPER_GLIDE_ON ? "YES" : "NO");
-        printf("FEATURE_SKINCHANGER_ON\t\t\t\t\t%s\n", FEATURE_SKINCHANGER_ON ? "YES" : "NO");
-        printf("FEATURE_QUICKTURN_ON\t\t\t\t\t%s\n", FEATURE_QUICKTURN_ON ? "YES" : "NO");
+        printf("FEATURE_SKINCHANGER_ON\t\t\t\t\t%s\n", FEATURE_SKINCHANGER_OFF ? "YES" : "NO");
+        printf("FEATURE_QUICKTURN_ON\t\t\t\t\t%s\n", FEATURE_QUICKTURN_OFF ? "YES" : "NO");
         printf("FEATURE_QUICKTURN_BUTTON\t\t\t\t%s\n", FEATURE_QUICKTURN_BUTTON.c_str());
-        printf("FEATURE_PRINT_LEVELS_ON\t\t\t\t\t%s\n", FEATURE_PRINT_LEVELS_ON ? "YES" : "NO");
+        printf("FEATURE_PRINT_LEVELS_ON\t\t\t\t\t%s\n", FEATURE_PRINT_LEVELS_OFF ? "YES" : "NO");
         printf("FEATURE_PRINT_LEVELS_BUTTON\t\t\t\t%s\n", FEATURE_PRINT_LEVELS_BUTTON.c_str());
         printf("FEATURE_MAP_RADAR_ON\t\t\t\t\t%s\n", FEATURE_MAP_RADAR_ON ? "YES" : "NO");
         printf("FEATURE_MAP_RADAR_BUTTON\t\t\t\t%s\n", FEATURE_MAP_RADAR_BUTTON.c_str());
