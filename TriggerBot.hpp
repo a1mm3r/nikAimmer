@@ -13,7 +13,7 @@ struct TriggerBot {
     }
     
     void shootAtEnemy(int counter) {
-        if (!cl->FEATURE_TRIGGERBOT_ON) return;
+        if (!cl->FEATURE_TRIGGERBOT_OFF) return;
         if (!lp->isCombatReady()) return;
         
         int weaponId = lp->weaponIndex;
