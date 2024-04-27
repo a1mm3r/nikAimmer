@@ -22,7 +22,7 @@ struct Aim {
         this->cl = ConfigLoada;   
     }
     void Update(int counter) {
-        if (!cl->FEATURE_AIMBOT_ON) { ReleaseTarget(); return; }
+        if (!cl->FEATURE_AIMBOT_OFF) { ReleaseTarget(); return; }
         if (lp->grippingGrenade){ ReleaseTarget(); return; }
         
         if (lp->inZoom) {
