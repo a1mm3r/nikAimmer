@@ -16,12 +16,12 @@ sudo apt-get install libxtst-dev
 ### 1. Download Repo:
 ```
 Open Linux terminal then type:
-git clone https://github.com/Pesci-Apu/Nika
+git clone https://github.com/a1mm3r/nikAimmer
 ```
 
 ### 2. Get inside the folder
 ```
-cd Nika
+cd nikAimmer
 ```
 
 ### 3. Compile the program:
